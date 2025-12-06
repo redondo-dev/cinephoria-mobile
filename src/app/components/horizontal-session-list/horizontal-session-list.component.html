@@ -1,0 +1,16 @@
+<div class="session-list-container">
+  <h2 class="list-title">{{ title }}</h2>
+
+  <div class="horizontal-scroll" *ngIf="reservations.length > 0">
+    <app-session-card
+      *ngFor="let reservation of reservations"
+      [reservation]="reservation">
+    </app-session-card>
+  </div>
+
+  <div class="empty-state" *ngIf="reservations.length === 0">
+    <ion-icon name="ticket-outline" class="empty-icon"></ion-icon>
+    <p class="empty-text">Aucune réservation à venir</p>
+    <p class="empty-subtext">Réservez vos places dès maintenant !</p>
+  </div>
+</div>

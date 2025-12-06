@@ -1,0 +1,34 @@
+<ion-content class="login-content">
+  <div class="login-container">
+    <div class="logo-section">
+      <h1 class="app-title">🎬 CINEPHORIA</h1>
+      <p class="app-subtitle">Votre cinéma en poche</p>
+    </div>
+
+    <div class="login-form">
+      <ion-item lines="none" class="input-item">
+        <ion-icon name="mail-outline" slot="start"></ion-icon>
+        <ion-input type="email" placeholder="Email" [(ngModel)]="email" autocomplete="email">
+        </ion-input>
+      </ion-item>
+
+      <ion-item lines="none" class="input-item">
+        <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+        <ion-input type="password" placeholder="Mot de passe" [(ngModel)]="password" autocomplete="current-password">
+        </ion-input>
+      </ion-item>
+
+      <ion-button expand="block" class="btn-netflix login-button" (click)="login()">
+        Se connecter
+      </ion-button>
+
+      <div class="register-link">
+        <p>Pas encore de compte ?</p>
+        <ion-button fill="clear" class="btn-outline-netflix" (click)="goToRegister()">
+          S'inscrire
+        </ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>
+

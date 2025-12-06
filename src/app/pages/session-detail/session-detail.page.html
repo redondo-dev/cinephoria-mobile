@@ -1,0 +1,81 @@
+<app-app-bar [title]="'Détail de la séance'" [showBack]="true"></app-app-bar>
+
+<ion-content *ngIf="!isLoading && reservation">
+  <div class="detail-container" [style.background-image]="'url(' + reservation.seance.film.affiche + ')'">
+
+    <div class="blur-overlay"></div>
+
+    <div class="content-wrapper">
+      <div class="poster-section">
+        <img [src]="reservation.seance.film.affiche" [alt]="reservation.seance.film.titre" class="poster-image"
+          onerror="this.src='assets/images/placeholder-movie.jpg'">
+      </div>
+
+      <div class="info-card">
+        <h1 class="film-title">{{ reservation.seance.film.titre }}</h1>
+
+        <div class="info-grid">
+          <div class="info-item">
+            <ion-icon name="calendar" color="danger"></ion-icon>
+            <div>
+              <p class="label">Date</p>
+              <p class="value">{{ formatDate(reservation.seance.date_seance) }}</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <ion-icon name="time" color="danger"></ion-icon>
+            <div>
+              <p class="label">Horaire</p>
+              <p class="value">
+                {{ formatTime(reservation.seance.date_heure_debut) }} -
+                {{ formatTime(reservation.seance.date_heure_fin) }}
+              </p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <ion-icon name="location" color="danger"></ion-icon>
+            <div>
+              <p class="label">Salle</p>
+              <p class="value">{{ reservation.seance.salle.nom_salle }}</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <ion-icon name="people" color="danger"></ion-icon>
+            <div>
+              <p class="label">Places</p>
+              <p class="value">{{ reservation.nb_places }} place(s)</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <ion-icon name="cash" color="danger"></ion-icon>
+            <div>
+              <p class="label">Prix total</p>
+              <p class="value">{{ reservation.prix_unitaire * reservation.nb_places }}€</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <ion-icon name="checkmark-circle" color="danger"></ion-icon>
+            <div>
+              <p class="label">Statut</p>
+              <p class="value status-confirmed">{{ reservation.statut_reservation }}</p>
+            </div>
+          </div>
+        </div>
+
+        <ion-button expand="block" class="btn-netflix qr-button" (click)="showQRCode()">
+          <ion-icon name="qr-code" slot="start"></ion-icon>
+          Afficher mon billet
+        </ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<div class="loading-container" *ngIf="isLoading">
+  <ion-spinner name="crescent" color="danger"></ion-spinner>
+</div>

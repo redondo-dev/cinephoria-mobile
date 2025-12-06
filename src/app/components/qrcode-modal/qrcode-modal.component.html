@@ -1,0 +1,62 @@
+<div class="qr-modal-container">
+  <div class="qr-header">
+    <h2>🎟️ Mon Billet</h2>
+    <ion-button fill="clear" (click)="dismiss()">
+      <ion-icon name="close" size="large" color="light"></ion-icon>
+    </ion-button>
+  </div>
+
+  <div class="qr-content">
+    <div class="ticket-info" *ngIf="reservationInfo">
+      <h3 class="film-title">{{ reservationInfo.film }}</h3>
+      <div class="divider"></div>
+    </div>
+
+    <div class="qr-code-wrapper">
+      <img [src]="qrCodeData" alt="QR Code de réservation" class="qr-code-image">
+      <p class="scan-text">Présentez ce code à l'entrée</p>
+    </div>
+
+    <div class="reservation-details" *ngIf="reservationInfo">
+      <div class="detail-row">
+        <ion-icon name="calendar" color="danger"></ion-icon>
+        <div class="detail-content">
+          <span class="detail-label">Date</span>
+          <span class="detail-value">{{ reservationInfo.date }}</span>
+        </div>
+      </div>
+
+      <div class="detail-row">
+        <ion-icon name="time" color="danger"></ion-icon>
+        <div class="detail-content">
+          <span class="detail-label">Horaire</span>
+          <span class="detail-value">{{ reservationInfo.time }}</span>
+        </div>
+      </div>
+
+      <div class="detail-row">
+        <ion-icon name="location" color="danger"></ion-icon>
+        <div class="detail-content">
+          <span class="detail-label">Salle</span>
+          <span class="detail-value">{{ reservationInfo.salle }}</span>
+        </div>
+      </div>
+
+      <div class="detail-row">
+        <ion-icon name="people" color="danger"></ion-icon>
+        <div class="detail-content">
+          <span class="detail-label">Places</span>
+          <span class="detail-value">{{ reservationInfo.places }} place(s)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ion-button
+    expand="block"
+    class="btn-netflix close-button"
+    (click)="dismiss()">
+    <ion-icon name="checkmark-circle" slot="start"></ion-icon>
+    Fermer
+  </ion-button>
+</div>
