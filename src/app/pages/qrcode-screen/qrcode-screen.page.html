@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button fill="clear" slot="start" (click)="goBack()">
+      <ion-icon name="arrow-back" color="light"></ion-icon>
+    </ion-button>
+    <ion-title>Mon Billet</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="qr-container" *ngIf="!isLoading && qrCodeData">
+    <div class="qr-header">
+      <h1>🎟️ Mon Billet Cinéma</h1>
+      <p class="subtitle">Présentez ce code à l'entrée</p>
+    </div>
+
+    <div class="qr-code-wrapper">
+      <img [src]="qrCodeData" alt="QR Code de réservation" class="qr-code-image">
+    </div>
+
+    <div class="reservation-details" *ngIf="reservationInfo">
+      <h2 class="film-title">{{ reservationInfo.seance?.film?.titre || 'Film' }}</h2>
+
+      <div class="detail-row">
+        <ion-icon name="calendar" color="danger"></ion-icon>
+        <div class="detail-content">
+          <span class="detail-label">Date</span>
+          <span class="detail-value">{{ reservationInfo.seance?.date }}</span>
+        </div>
+      </div>
+
+      <div class="detail-row">
+        <ion-icon name="time" color="danger"></ion-icon>
+        <div class="detail-content">
+          <span class="detail-label">Horaire</span>
+          <span class="detail-value">
+            {{ reservationInfo.seance?.startTime }} - {{ reservationInfo.seance?.endTime }}
+          </span>
+        </div>
+      </div>
+
+      <div class="detail-row">
+        <ion-icon name="location" color="danger"></ion-icon>
+        <div class="detail-content">
+          <span class="detail-label">Salle</span>
+          <span class="detail-value">{{ reservationInfo.seance?.salle?.nom_salle || 'Salle ' + reservationInfo.seanceId
+            }}</span>
+        </div>
+      </div>
+
+      <div class="detail-row">
+        <ion-icon name="people" color="danger"></ion-icon>
+        <div class="detail-content">
+          <span class="detail-label">Places</span>
+          <span class="detail-value">{{ reservationInfo.seats || 1 }} place(s)</span>
+        </div>
+      </div>
+
+      <div class="status-badge">
+        <ion-icon name="checkmark-circle"></ion-icon>
+        <span>Réservation confirmée</span>
+      </div>
+    </div>
+
+    <ion-button expand="block" class="btn-netflix close-button" (click)="goBack()">
+      <ion-icon name="arrow-back" slot="start"></ion-icon>
+      Retour aux réservations
+    </ion-button>
+  </div>
+
+  <div class="loading-container" *ngIf="isLoading">
+    <ion-spinner name="crescent" color="danger"></ion-spinner>
+    <p>Génération du QR Code...</p>
+  </div>
+</ion-content>

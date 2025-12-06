@@ -1,0 +1,31 @@
+@import './theme/colors.scss';
+@import './theme/typography.scss';
+
+ion-content {
+  --background: var(--netflix-black);
+}
+
+ion-toolbar {
+  --background: var(--netflix-black);
+  --color: var(--text-primary);
+}
+
+// Boutons style Netflix
+.btn-netflix {
+  --background: var(--netflix-red);
+  --background-activated: var(--netflix-red-dark);
+  --color: var(--text-primary);
+  --border-radius: var(--radius-sm);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-outline-netflix {
+  --background: transparent;
+  --border-color: var(--netflix-red);
+  --border-width: 2px;
+  --color: var(--netflix-red);
+  --border-radius: var(--radius-sm);
+  font-weight: 700;
+}

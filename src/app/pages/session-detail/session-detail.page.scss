@@ -1,0 +1,325 @@
+// ========================================
+// SESSION DETAIL - NETFLIX STYLE
+// ========================================
+
+ion-content {
+  --background: var(--netflix-black);
+}
+
+// Container principal avec image de fond
+.detail-container {
+  min-height: 100%;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  position: relative;
+  animation: fadeIn 0.6s ease-out;
+}
+
+// Overlay flou avec dégradé pour effet cinématographique
+.blur-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(30px) saturate(180%);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(17, 17, 17, 0.9) 40%,
+    rgba(17, 17, 17, 0.95) 100%
+  );
+}
+
+// Wrapper de contenu
+.content-wrapper {
+  position: relative;
+  z-index: 2;
+  padding: 32px 20px;
+  animation: slideUp 0.8s ease-out;
+}
+
+// Section poster du film
+.poster-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
+
+  .poster-image {
+    width: 220px;
+    height: 330px;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    box-shadow:
+      0 20px 60px rgba(0, 0, 0, 0.8),
+      0 0 0 1px rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: posterZoom 0.6s ease-out;
+
+    &:hover {
+      transform: scale(1.02) translateY(-4px);
+      box-shadow:
+        0 25px 80px rgba(229, 9, 20, 0.3),
+        0 0 0 1px rgba(229, 9, 20, 0.2);
+    }
+  }
+}
+
+// Carte d'informations style Netflix
+.info-card {
+  background: linear-gradient(
+    145deg,
+    rgba(26, 26, 26, 0.98) 0%,
+    rgba(20, 20, 20, 0.95) 100%
+  );
+  backdrop-filter: blur(20px);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(229, 9, 20, 0.1);
+  position: relative;
+  overflow: hidden;
+
+  // Effet de brillance en haut
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(229, 9, 20, 0.5),
+      transparent
+    );
+  }
+
+  .film-title {
+    color: var(--text-primary);
+    font-size: 32px;
+    font-weight: 900;
+    margin: 0 0 28px 0;
+    text-align: center;
+    letter-spacing: -0.5px;
+    text-shadow: 2px 2px 8px rgba(232, 222, 222, 0.8);
+    line-height: 1.2;
+  }
+}
+
+// Grille d'informations
+.info-grid {
+  display: grid;
+  gap: 24px;
+  margin-bottom: 32px;
+
+  .info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px;
+    background: rgba(241, 237, 237, 0.913);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--netflix-red);
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.04);
+      transform: translateX(4px);
+      border-left-color: var(--netflix-red);
+    }
+
+    ion-icon {
+      font-size: 28px;
+      margin-top: 2px;
+      flex-shrink: 0;
+      filter: drop-shadow(0 2px 4px rgba(229, 9, 20, 0.3));
+    }
+
+    .label {
+      color: var(--text-muted);
+      font-size: 11px;
+      margin: 0 0 6px 0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    .value {
+      color: var(--text-primary);
+      font-size: 17px;
+      font-weight: 600;
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    .status-confirmed {
+      color: #4ade80;
+      text-transform: capitalize;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+
+      &::before {
+        content: '✓';
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+// Bouton QR Code style Netflix
+.qr-button {
+  height: 60px;
+  font-size: 17px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-top: 8px;
+  --box-shadow: 0 8px 24px rgba(229, 9, 20, 0.4);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    transition: left 0.5s ease;
+  }
+
+  &:active::before {
+    left: 100%;
+  }
+
+  ion-icon {
+    font-size: 28px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  }
+}
+
+// Container de chargement
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: var(--netflix-black);
+
+  ion-spinner {
+    --color: var(--netflix-red);
+    transform: scale(1.8);
+    margin-bottom: 24px;
+    filter: drop-shadow(0 0 12px rgba(229, 9, 20, 0.5));
+  }
+
+  p {
+    color: var(--text-secondary);
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 16px;
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+}
+
+// ========================================
+// ANIMATIONS
+// ========================================
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes posterZoom {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+// ========================================
+// RESPONSIVE
+// ========================================
+
+@media (max-width: 375px) {
+  .poster-section .poster-image {
+    width: 180px;
+    height: 270px;
+  }
+
+  .info-card {
+    padding: 20px;
+
+    .film-title {
+      font-size: 26px;
+    }
+  }
+
+  .info-grid .info-item {
+    padding: 12px;
+  }
+}
+
+@media (min-width: 768px) {
+  .content-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px 24px;
+  }
+
+  .poster-section .poster-image {
+    width: 260px;
+    height: 390px;
+  }
+
+  .info-card .film-title {
+    font-size: 36px;
+  }
+
+  .info-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

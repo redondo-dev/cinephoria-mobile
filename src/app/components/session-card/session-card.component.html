@@ -1,0 +1,40 @@
+<div class="session-card" (click)="viewDetails()">
+  <div class="card-image">
+    <img [src]="reservation.seance.film.affiche" [alt]="reservation.seance.film.titre"
+      onerror="this.src='assets/images/placeholder-movie.jpg'">
+
+    <div class="card-overlay">
+      <div class="overlay-content">
+        <h2 class="film-title">{{ reservation.seance.film.titre }}</h2>
+
+        <div class="session-info">
+          <ion-chip color="danger" class="date-chip">
+            <ion-icon name="calendar-outline"></ion-icon>
+            <ion-label>{{ formatDate(reservation.seance.date_seance) }}</ion-label>
+          </ion-chip>
+
+          <div class="info-row">
+            <ion-icon name="time-outline"></ion-icon>
+            <span>{{ formatTime(reservation.seance.date_heure_debut) }} - {{
+              formatTime(reservation.seance.date_heure_fin) }}</span>
+          </div>
+
+          <div class="info-row">
+            <ion-icon name="location-outline"></ion-icon>
+            <span>{{ reservation.seance.salle.nom_salle }}</span>
+          </div>
+
+          <div class="info-row">
+            <ion-icon name="people-outline"></ion-icon>
+            <span>{{ reservation.nb_places }} place(s)</span>
+          </div>
+        </div>
+
+        <ion-button expand="block" class="btn-netflix qr-button">
+          <ion-icon name="qr-code-outline" slot="start"></ion-icon>
+          Afficher mon billet
+        </ion-button>
+      </div>
+    </div>
+  </div>
+</div>

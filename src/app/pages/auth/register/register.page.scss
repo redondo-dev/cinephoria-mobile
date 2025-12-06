@@ -1,0 +1,63 @@
+.register-content {
+  --background: var(--netflix-black);
+}
+
+.register-container {
+  padding: 24px;
+  min-height: 100%;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 32px;
+
+  ion-button {
+    margin-left: -12px;
+  }
+
+  .page-title {
+    color: var(--text-primary);
+    font-size: 32px;
+    font-weight: 900;
+    margin: 0;
+    margin-left: 16px;
+  }
+}
+
+.register-form {
+  .input-item {
+    --background: var(--bg-card);
+    --border-radius: var(--radius-sm);
+    --padding-start: 16px;
+    --padding-end: 16px;
+    margin-bottom: 16px;
+
+    ion-icon {
+      color: var(--netflix-red);
+      margin-right: 12px;
+    }
+
+    ion-input {
+      --color: var(--text-primary);
+      --placeholder-color: var(--text-muted);
+    }
+  }
+
+  .register-button {
+    margin-top: 32px;
+    height: 50px;
+    font-size: 16px;
+  }
+
+  .login-link {
+    text-align: center;
+    margin-top: 24px;
+
+    p {
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+  }
+}

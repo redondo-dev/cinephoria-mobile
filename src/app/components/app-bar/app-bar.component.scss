@@ -1,0 +1,18 @@
+ion-toolbar {
+  --background: var(--netflix-black);
+  --border-color: var(--netflix-red);
+  border-bottom: 2px solid var(--netflix-red);
+}
+
+ion-title {
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+ion-button {
+  --color: var(--text-primary);
+
+  &:hover {
+    --color: var(--netflix-red);
+  }
+}

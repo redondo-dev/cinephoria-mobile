@@ -1,0 +1,161 @@
+.qr-modal-container {
+  background: var(--netflix-black);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+.qr-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+
+  h2 {
+    color: var(--text-primary);
+    font-size: 28px;
+    font-weight: 900;
+    margin: 0;
+  }
+
+  ion-button {
+    --padding-start: 8px;
+    --padding-end: 8px;
+  }
+}
+
+.qr-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ticket-info {
+  width: 100%;
+  margin-bottom: 24px;
+
+  .film-title {
+    color: var(--text-primary);
+    font-size: 22px;
+    font-weight: 700;
+    text-align: center;
+    margin: 0 0 16px 0;
+  }
+
+  .divider {
+    height: 2px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--netflix-red),
+      transparent
+    );
+    margin: 0 auto;
+    width: 80%;
+  }
+}
+
+.qr-code-wrapper {
+  background: white;
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  margin-bottom: 32px;
+  box-shadow: var(--shadow-heavy);
+  text-align: center;
+  animation: fadeInScale 0.5s ease-out;
+
+  .qr-code-image {
+    width: 250px;
+    height: 250px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .scan-text {
+    margin-top: 16px;
+    color: var(--netflix-black);
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+}
+
+.reservation-details {
+  width: 100%;
+  background: var(--bg-card);
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+
+  .detail-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 16px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    ion-icon {
+      font-size: 28px;
+      flex-shrink: 0;
+    }
+
+    .detail-content {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+
+      .detail-label {
+        color: var(--text-muted);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 4px;
+      }
+
+      .detail-value {
+        color: var(--text-primary);
+        font-size: 16px;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.close-button {
+  margin-top: 24px;
+  height: 56px;
+  font-size: 16px;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// Scrollbar styling pour le modal
+.qr-modal-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.qr-modal-container::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+.qr-modal-container::-webkit-scrollbar-thumb {
+  background: var(--netflix-red);
+  border-radius: 3px;
+}

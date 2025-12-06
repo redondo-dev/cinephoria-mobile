@@ -1,0 +1,154 @@
+ion-content {
+  --background: var(--netflix-black);
+}
+
+ion-toolbar {
+  --background: var(--netflix-black);
+  --border-color: var(--netflix-red);
+  border-bottom: 2px solid var(--netflix-red);
+}
+
+.qr-container {
+  padding: 24px;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.qr-header {
+  text-align: center;
+  margin-bottom: 32px;
+
+  h1 {
+    color: var(--text-primary);
+    font-size: 28px;
+    font-weight: 900;
+    margin: 0 0 8px 0;
+  }
+
+  .subtitle {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin: 0;
+  }
+}
+
+.qr-code-wrapper {
+  background: white;
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  margin: 0 auto 32px auto;
+  box-shadow: var(--shadow-heavy);
+  max-width: 350px;
+  width: 100%;
+
+  .qr-code-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+.reservation-details {
+  background: var(--bg-card);
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: 24px;
+
+  .film-title {
+    color: var(--text-primary);
+    font-size: 22px;
+    font-weight: 700;
+    text-align: center;
+    margin: 0 0 24px 0;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--netflix-red);
+  }
+
+  .detail-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 16px;
+
+    &:last-of-type {
+      margin-bottom: 24px;
+    }
+
+    ion-icon {
+      font-size: 28px;
+      flex-shrink: 0;
+    }
+
+    .detail-content {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+
+      .detail-label {
+        color: var(--text-muted);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 4px;
+      }
+
+      .detail-value {
+        color: var(--text-primary);
+        font-size: 16px;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .status-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: rgba(74, 222, 128, 0.1);
+    border: 2px solid #4ade80;
+    border-radius: var(--radius-sm);
+    padding: 12px;
+    margin-top: 16px;
+
+    ion-icon {
+      color: #4ade80;
+      font-size: 24px;
+    }
+
+    span {
+      color: #4ade80;
+      font-weight: 700;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+  }
+}
+
+.close-button {
+  margin-top: auto;
+  height: 56px;
+  font-size: 16px;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+  ion-spinner {
+    --color: var(--netflix-red);
+    transform: scale(1.5);
+    margin-bottom: 16px;
+  }
+
+  p {
+    color: var(--text-secondary);
+    font-size: 14px;
+  }
+}

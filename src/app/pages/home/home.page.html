@@ -1,0 +1,23 @@
+<app-app-bar title="Mes Réservations" [showBack]="false"></app-app-bar>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div class="welcome-section" *ngIf="currentUser">
+    <h2>Bonjour, {{ currentUser.prenom }} !</h2>
+    <p>Vos prochaines séances</p>
+  </div>
+
+  <app-horizontal-session-list
+    *ngIf="!isLoading"
+    [reservations]="reservations"
+    title="À venir">
+  </app-horizontal-session-list>
+
+  <div class="loading-container" *ngIf="isLoading">
+    <ion-spinner name="crescent" color="danger"></ion-spinner>
+    <p>Chargement...</p>
+  </div>
+</ion-content>
